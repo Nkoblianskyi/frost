@@ -12,9 +12,7 @@ export function Faq() {
           <AccordionItem value="item-1" className="border-b border-primary/20">
             <AccordionTrigger className="text-lg font-medium">Hvordan spiller jeg Rik Høst?</AccordionTrigger>
             <AccordionContent className="text-base">
-              For å spille Rik Høst, klikk på "Start spillet" knappen på hjemmesiden. I spillet må du klikke på grupper
-              av tre eller flere like grønnsaker eller frukter for å høste dem. Jo flere like elementer du høster
-              samtidig, desto flere poeng får du.
+              For å spille Rik Høst, klikk på "Start spillet" knappen på hjemmesiden.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2" className="border-b border-primary/20">
