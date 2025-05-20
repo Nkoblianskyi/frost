@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 43 38% 93%;
+    --foreground: 142 40% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 142 40% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 142 40% 18%;
+
+    --primary: 142 25% 39%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 39 78% 61%;
+    --secondary-foreground: 142 40% 18%;
+
+    --muted: 142 10% 90%;
+    --muted-foreground: 142 10% 40%;
+
+    --accent: 39 78% 61%;
+    --accent-foreground: 142 40% 18%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 142 10% 85%;
+    --input: 142 10% 85%;
+    --ring: 142 25% 39%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 142 30% 10%;
+    --foreground: 0 0% 95%;
+
+    --card: 142 30% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 142 30% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 142 50% 50%;
+    --primary-foreground: 142 30% 10%;
+
+    --secondary: 39 78% 61%;
+    --secondary-foreground: 142 30% 10%;
+
+    --muted: 142 20% 20%;
+    --muted-foreground: 142 10% 70%;
+
+    --accent: 39 78% 61%;
+    --accent-foreground: 142 30% 10%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 142 20% 25%;
+    --input: 142 20% 25%;
+    --ring: 142 50% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-open-sans), system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-montserrat), system-ui, sans-serif;
+  }
+  
+  /* Покращені стилі для посилань */
+  a {
+    @apply transition-colors duration-200;
+  }
+  
+  a:focus {
+    @apply outline-none ring-2 ring-primary ring-offset-1;
+  }
+  
+  /* Стилі для посилань у тексті */
+  .prose a {
+    @apply font-medium text-primary underline decoration-2 underline-offset-2 hover:text-primary/80;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.8);
+  }
+  100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-wave {
+  animation: wave 15s linear infinite;
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease-out forwards;
+}
+
+/* Game specific styles */
+.matching-vegetable {
+  filter: drop-shadow(0 0 5px theme('colors.primary.DEFAULT'));
+}
+
+/* Disclaimer link styles */
+.disclaimer a {
+  @apply font-semibold text-primary underline hover:text-primary/80;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+}
+
+.farm-background {
+  background-color: hsl(var(--background));
+  background-image: 
+    linear-gradient(rgba(74, 124, 89, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 124, 89, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.farm-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, hsla(var(--background) / 0.8), hsla(var(--background) / 0.5));
+  z-index: 1;
+}
+
+.farm-background > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Card hover effects */
+.feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90 rounded-full;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 124, 89, 0.25);
+}
+
+.btn-secondary {
+  @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(233, 180, 76, 0.25);
+}
+
+/* Покращені стилі для посилань у футері */
+.footer-link {
+  @apply relative inline-flex items-center text-slate-300 transition-colors hover:text-white;
+}
+
+.footer-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 h-0.5 w-0 bg-white transition-all duration-300;
+}
+
+.footer-link:hover::after {
+  @apply w-full;
+}
+
+/* Стилі для логотипів організацій */
+.org-logo-link {
+  @apply flex items-center justify-center rounded-lg bg-slate-900 p-4 transition-all hover:bg-slate-800 hover:shadow-lg;
+}
+
+.org-logo-link:focus {
+  @apply outline-none ring-2 ring-slate-300 ring-offset-2 ring-offset-slate-950;
+}
+
+.org-logo {
+  @apply h-10 w-auto object-contain;
+}
